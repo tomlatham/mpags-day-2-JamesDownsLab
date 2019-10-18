@@ -12,6 +12,34 @@
 #include "processCommandLine.hpp"
 
 
+std::string read_input(std::string inputFile){
+  char inputChar {'x'};
+  std::string inputText{""};
+
+    if (!inputFile.empty()) {
+    std::ifstream in_file {inputFile};
+    bool ok_to_read {in_file.good()};
+    if (ok_to_read){
+      while (in_file >> inputChar){
+        // Loop over each character from the input file
+        inputText += transformChar(inputChar);
+      }
+    }
+    else{
+      std::cerr << "Error reading File" << std::endl;
+    }
+  }
+  else{
+    // Loop over each character from user input
+    // (until Return then CTRL-D (EOF) pressed)
+    while(std::cin >> inputChar)
+    {
+      inputText += transformChar(inputChar);
+    }
+  }
+  return inputText;
+}
+
 // Main function of the mpags-cipher program
 int main(int argc, char* argv[])
 {
@@ -64,32 +92,7 @@ int main(int argc, char* argv[])
     return 0;
   }
 
-  // Initialise variables for processing input text
-  char inputChar {'x'};
-  std::string inputText {""};
-
-  // Read in user input from stdin/file
-  if (!inputFile.empty()) {
-    std::ifstream in_file {inputFile};
-    bool ok_to_read {in_file.good()};
-    if (ok_to_read){
-      while (in_file >> inputChar){
-        // Loop over each character from the input file
-        inputText += transformChar(inputChar);
-      }
-    }
-    else{
-      std::cerr << "Error reading File" << std::endl;
-    }
-  }
-  else{
-    // Loop over each character from user input
-    // (until Return then CTRL-D (EOF) pressed)
-    while(std::cin >> inputChar)
-    {
-      inputText += transformChar(inputChar);
-    }
-  }
+  std::string inputText {read_input(inputFile)};
   
   // Output the transliterated text.
   // To output file if given, to screen if not.
