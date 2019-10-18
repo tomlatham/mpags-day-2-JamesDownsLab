@@ -18,7 +18,8 @@ set(CMAKE_CXX_STANDARD 11)
 add_executable(mpags-cipher 
 mpags-cipher.cpp
 MPAGS-CIPHER/TransformChar.cpp
-MPAGS-CIPHER/processCommandLine.cpp)
+MPAGS-CIPHER/processCommandLine.cpp
+MPAGS-CIPHER/readInput.cpp)
 
 target_include_directories(mpags-cipher
 PRIVATE MPAGS-CIPHER)
