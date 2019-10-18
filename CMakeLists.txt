@@ -20,7 +20,8 @@ mpags-cipher.cpp
 MPAGS-CIPHER/TransformChar.cpp
 MPAGS-CIPHER/processCommandLine.cpp
 MPAGS-CIPHER/readInput.cpp
-MPAGS-CIPHER/writeOutput.cpp)
+MPAGS-CIPHER/writeOutput.cpp
+MPAGS-CIPHER/CaesarCipher.cpp)
 
 target_include_directories(mpags-cipher
 PRIVATE MPAGS-CIPHER)
