@@ -61,26 +61,18 @@ std::string transformChar(const char in_char){
   return out_string;
 }
 
-// Main function of the mpags-cipher program
-int main(int argc, char* argv[])
+bool processCommandLine (
+  const std::vector<std::string>& cmdLineArgs,
+  bool& helpRequested,
+  bool& versionRequested,
+  std::string& inputFile,
+  std::string& outputFile
+)
 {
-  // Convert the command-line arguments into a more easily usable form
-  const std::vector<std::string> cmdLineArgs {argv, argv+argc};
-
-  // Add a typedef that assigns another name for the given type for clarity
   typedef std::vector<std::string>::size_type size_type;
   const size_type nCmdLineArgs {cmdLineArgs.size()};
 
-  // Options that might be set by the command-line arguments
-  bool helpRequested {false};
-  bool versionRequested {false};
-  std::string inputFile {""};
-  std::string outputFile {""};
-
-  // Process command line arguments - ignore zeroth element, as we know this to
-  // be the program name and don't need to worry about it
-  for (size_type i {1}; i < nCmdLineArgs; ++i) {
-
+  for (size_type i {1}; i < nCmdLineArgs; i++) {
     if (cmdLineArgs[i] == "-h" || cmdLineArgs[i] == "--help") {
       helpRequested = true;
     }
@@ -89,38 +81,65 @@ int main(int argc, char* argv[])
     }
     else if (cmdLineArgs[i] == "-i") {
       // Handle input file option
-      // Next element is filename unless -i is the last argument
-      if (i == nCmdLineArgs-1) {
-	std::cerr << "[error] -i requires a filename argument" << std::endl;
-	// exit main with non-zero return to indicate failure
-	return 1;
+      // NExt element is filename unless -i is the last argument
+      if (i == nCmdLineArgs -1) {
+        std::cerr << "[error] -i requires a filename argument" << std::endl;
+        // exit with non-zero
+        return 1;
       }
       else {
-	// Got filename, so assign value and advance past it
-	inputFile = cmdLineArgs[i+1];
-	++i;
+        // Got filename, so assign value and advance past it
+        inputFile = cmdLineArgs[i+1];
+        ++i;
       }
     }
     else if (cmdLineArgs[i] == "-o") {
       // Handle output file option
       // Next element is filename unless -o is the last argument
       if (i == nCmdLineArgs-1) {
-	std::cerr << "[error] -o requires a filename argument" << std::endl;
-	// exit main with non-zero return to indicate failure
-	return 1;
+        std::cerr << "[error] -o requires a filename argument" << std::endl;
+        // exit with non-zero
+        return 1;
       }
       else {
-	// Got filename, so assign value and advance past it
-	outputFile = cmdLineArgs[i+1];
-	++i;
+        outputFile = cmdLineArgs[i+1];
+        ++i;
       }
     }
     else {
-      // Have an unknown flag to output error message and return non-zero
-      // exit status to indicate failure
+      // Have an unknown flag to output error message
       std::cerr << "[error] unknown argument '" << cmdLineArgs[i] << "'\n";
+      // Exit with non-zero
       return 1;
     }
+  }
+  return 0;
+}
+
+// Main function of the mpags-cipher program
+int main(int argc, char* argv[])
+{
+  // Convert the command-line arguments into a more easily usable form
+  const std::vector<std::string> cmdLineArgs {argv, argv+argc};
+
+  // Options that might be set by the command-line arguments
+  bool helpRequested {false};
+  bool versionRequested {false};
+  std::string inputFile {""};
+  std::string outputFile {""};
+
+  bool commandLineFailed{true};
+
+  commandLineFailed = processCommandLine(
+    cmdLineArgs,
+    helpRequested,
+    versionRequested,
+    inputFile,
+    outputFile
+  );
+
+  if (commandLineFailed){
+    return 1;
   }
 
   // Handle help, if requested
