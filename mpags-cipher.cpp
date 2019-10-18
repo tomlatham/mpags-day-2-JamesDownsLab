@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 // For std::isalpha and std::isupper
 #include <cctype>
@@ -70,18 +71,25 @@ int main(int argc, char* argv[])
   // Read in user input from stdin/file
   // Warn that input file option not yet implemented
   if (!inputFile.empty()) {
-    std::cout << "[warning] input from file ('"
-              << inputFile
-              << "') not implemented yet, using stdin\n";
+    std::ifstream in_file {inputFile};
+    bool ok_to_read {in_file.good()};
+    if (ok_to_read){
+      while (in_file >> inputChar){
+        inputText += transformChar(inputChar);
+      }
+    }
+    else{
+      std::cerr << "Error reading File" << std::endl;
+    }
   }
-
-  // Loop over each character from user input
-  // (until Return then CTRL-D (EOF) pressed)
-  while(std::cin >> inputChar)
-  {
-    inputText += transformChar(inputChar);;
+  else{
+    // Loop over each character from user input
+    // (until Return then CTRL-D (EOF) pressed)
+    while(std::cin >> inputChar)
+    {
+      inputText += transformChar(inputChar);
+    }
   }
-
   // Output the transliterated text
   // Warn that output file option not yet implemented
   if (!outputFile.empty()) {
