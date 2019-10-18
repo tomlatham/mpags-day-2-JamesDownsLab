@@ -15,7 +15,12 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_CXX_STANDARD 11)
 
 # - Declare the build of mpags-cipher.cpp
-add_executable(mpags-cipher mpags-cipher.cpp)
+add_executable(mpags-cipher 
+mpags-cipher.cpp
+MPAGS-CIPHER/TransformChar.cpp)
+
+target_include_directories(mpags-cipher
+PRIVATE MPAGS-CIPHER)
 
 # - Don't allow C++ Compiler Vendor Extensions
 set(CMAKE_CXX_EXTENSIONS OFF)
