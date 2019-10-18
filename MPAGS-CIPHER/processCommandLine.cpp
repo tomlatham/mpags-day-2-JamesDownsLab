@@ -5,7 +5,9 @@ bool processCommandLine (
   bool& helpRequested,
   bool& versionRequested,
   std::string& inputFile,
-  std::string& outputFile
+  std::string& outputFile,
+  int& defaultKey,
+  bool& encrypt
 )
 {
   typedef std::vector<std::string>::size_type size_type;
@@ -44,6 +46,24 @@ bool processCommandLine (
         outputFile = cmdLineArgs[i+1];
         ++i;
       }
+    }
+    else if (cmdLineArgs[i] == "-k") {
+      // Handle default key
+      if (i == nCmdLineArgs-1) {
+        std::cerr << "[error] -k requires a default key size" << std::endl;
+        // exit with non-zero
+        return 1;
+      }
+      else {
+        defaultKey = stoi(cmdLineArgs[i+1]);
+        ++i;
+      }
+    }
+    else if (cmdLineArgs[i] == "--encrypt"){
+      encrypt = true;
+    }
+    else if (cmdLineArgs[i] == "--decrypt") {
+      encrypt = false;
     }
     else {
       // Have an unknown flag to output error message

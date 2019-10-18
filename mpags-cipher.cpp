@@ -28,6 +28,8 @@ int main(int argc, char* argv[])
   bool versionRequested {false};
   std::string inputFile {""};
   std::string outputFile {""};
+  int defaultKey {5};
+  bool encrypt {true};
 
   bool commandLineFailed{true};
 
@@ -36,7 +38,9 @@ int main(int argc, char* argv[])
     helpRequested,
     versionRequested,
     inputFile,
-    outputFile
+    outputFile,
+    defaultKey,
+    encrypt
   );
 
   if (commandLineFailed){
