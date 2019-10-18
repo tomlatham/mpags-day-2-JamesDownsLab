@@ -1,3 +1,6 @@
+# Don't add the compiled 
+mpags-cipher
+
 # Lines beginning with a '#' are comments
 # Text Editor Temp Files
 *~
