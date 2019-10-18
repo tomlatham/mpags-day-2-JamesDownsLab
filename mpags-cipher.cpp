@@ -12,6 +12,19 @@
 #include "processCommandLine.hpp"
 #include "readInput.hpp"
 
+void write_output(std::string outputFile,
+  std::string outputText){
+    if (!outputFile.empty()) {
+      std::ofstream out_file {outputFile};
+      bool ok_to_write {out_file.good()};
+    if (ok_to_write){
+      out_file << outputText;
+    }
+  }
+  else{
+    std::cout << outputText << std::endl;
+  }
+}
 
 
 
@@ -71,16 +84,7 @@ int main(int argc, char* argv[])
   
   // Output the transliterated text.
   // To output file if given, to screen if not.
-  if (!outputFile.empty()) {
-    std::ofstream out_file {outputFile};
-    bool ok_to_write {out_file.good()};
-    if (ok_to_write){
-      out_file << inputText;
-    }
-  }
-  else{
-    std::cout << inputText << std::endl;
-  }
+  write_output(outputFile, inputText);
 
   
 
