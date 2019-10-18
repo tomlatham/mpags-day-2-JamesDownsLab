@@ -69,12 +69,12 @@ int main(int argc, char* argv[])
   std::string inputText {""};
 
   // Read in user input from stdin/file
-  // Warn that input file option not yet implemented
   if (!inputFile.empty()) {
     std::ifstream in_file {inputFile};
     bool ok_to_read {in_file.good()};
     if (ok_to_read){
       while (in_file >> inputChar){
+        // Loop over each character from the input file
         inputText += transformChar(inputChar);
       }
     }
@@ -90,15 +90,21 @@ int main(int argc, char* argv[])
       inputText += transformChar(inputChar);
     }
   }
-  // Output the transliterated text
-  // Warn that output file option not yet implemented
+  
+  // Output the transliterated text.
+  // To output file if given, to screen if not.
   if (!outputFile.empty()) {
-    std::cout << "[warning] output to file ('"
-              << outputFile
-              << "') not implemented yet, using stdout\n";
+    std::ofstream out_file {outputFile};
+    bool ok_to_write {out_file.good()};
+    if (ok_to_write){
+      out_file << inputText;
+    }
+  }
+  else{
+    std::cout << inputText << std::endl;
   }
 
-  std::cout << inputText << std::endl;
+  
 
   // No requirement to return from main, but we do so for clarity
   // and for consistency with other functions
