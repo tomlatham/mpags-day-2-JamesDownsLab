@@ -1,7 +1,9 @@
 #include "writeOutput.hpp"
 
-void write_output(std::string outputFile,
-  std::string outputText){
+void write_output(
+  const std::string& outputFile,
+  const std::string& outputText)
+  {
     if (!outputFile.empty()) {
       std::ofstream out_file {outputFile};
       bool ok_to_write {out_file.good()};

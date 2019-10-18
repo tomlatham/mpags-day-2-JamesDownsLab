@@ -5,6 +5,6 @@
 #include <fstream>
 #include <iostream>
 
-std::string read_input(std::string inputFile);
+std::string read_input(const std::string& inputFile);
 
 #endif

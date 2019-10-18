@@ -1,7 +1,9 @@
 #include "readInput.hpp"
 #include "TransformChar.hpp"
 
-std::string read_input(std::string inputFile){
+std::string read_input(
+  const std::string& inputFile)
+  {
   char inputChar {'x'};
   std::string inputText{""};
 
