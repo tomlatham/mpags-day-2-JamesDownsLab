@@ -68,13 +68,12 @@ int main(int argc, char* argv[])
     return 0;
   }
 
+  // Read the input, from a file if given, from console otherwise
   std::string inputText {read_input(inputFile)};
   
   // Output the transliterated text.
   // To output file if given, to screen if not.
   write_output(outputFile, inputText);
-
-  
 
   // No requirement to return from main, but we do so for clarity
   // and for consistency with other functions
