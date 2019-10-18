@@ -8,6 +8,9 @@ void write_output(std::string outputFile,
     if (ok_to_write){
       out_file << outputText;
     }
+    else{
+        std::cerr << "Error writing file" << std::endl;
+    }
   }
   else{
     std::cout << outputText << std::endl;
