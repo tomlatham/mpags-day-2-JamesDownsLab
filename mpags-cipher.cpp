@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 
     // Output the transliterated text.
     // To output file if given, to screen if not.
-    write_output(outputFile, inputText);
+    write_output(outputFile, outputText);
 
     // No requirement to return from main, but we do so for clarity
     // and for consistency with other functions
