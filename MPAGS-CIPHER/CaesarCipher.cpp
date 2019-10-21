@@ -4,8 +4,17 @@ std::string encryptCaesarCipher(
     const std::string& inputText,
     const int& key){
     std::string outputText;
-    for (std::string::size_type i = 0; i < inputText.size(); ++i){
-        outputText += inputText[(i + key)%inputText.size()];
+    const std::string alphabet{"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+    int position{0};
+    for (char i : inputText){
+        position = 0;
+        for (char j : alphabet){
+            if (i == j){
+                outputText += alphabet[(position + key)%alphabet.size()];
+                break;
+            }
+            ++position;
+        }
     }
     return outputText;
 }
