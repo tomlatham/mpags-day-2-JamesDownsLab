@@ -69,7 +69,7 @@ int main(int argc, char *argv[]) {
     // Read the input, from a file if given, from console otherwise
     std::string inputText{read_input(inputFile)};
 
-    std::string outputText{runCaesarCipher(inputText, true, key)};
+    std::string outputText{runCaesarCipher(inputText, encrypt, key)};
 
     // Output the transliterated text.
     // To output file if given, to screen if not.
