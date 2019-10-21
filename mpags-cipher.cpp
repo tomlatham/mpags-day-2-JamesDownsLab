@@ -9,7 +9,7 @@
 #include "readInput.hpp"
 #include "writeOutput.hpp"
 #include "CaesarCipher.hpp"
-#include "PrintHelp.h"
+#include "PrintHelp.hpp"
 
 
 // Main function of the mpags-cipher program

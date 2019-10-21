@@ -21,7 +21,7 @@ MPAGS-CIPHER/TransformChar.cpp
 MPAGS-CIPHER/processCommandLine.cpp
 MPAGS-CIPHER/readInput.cpp
 MPAGS-CIPHER/writeOutput.cpp
-MPAGS-CIPHER/CaesarCipher.cpp MPAGS-CIPHER/PrintHelp.cpp MPAGS-CIPHER/PrintHelp.h)
+MPAGS-CIPHER/CaesarCipher.cpp MPAGS-CIPHER/PrintHelp.cpp MPAGS-CIPHER/PrintHelp.hpp)
 
 target_include_directories(mpags-cipher
 PRIVATE MPAGS-CIPHER)
