@@ -20,10 +20,22 @@ std::string encryptCaesarCipher(
 }
 
 std::string decryptCaesarCipher(
-    const std::string& inputText
-)
-{
-    return inputText;
+    const std::string& inputText,
+    const int& key){
+    std::string outputText;
+    const std::string alphabet{"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+    int position{0};
+    for (char i : inputText){
+        position = 0;
+        for (char j : alphabet){
+            if (i==j){
+                outputText += alphabet[(position - key)%alphabet.size()];
+                break;
+            }
+            ++position;
+        }
+    }
+    return outputText;
 }
 
 std::string runCaesarCipher(
@@ -34,6 +46,6 @@ std::string runCaesarCipher(
         return encryptCaesarCipher(inputText, key);
     }
     else{
-        return decryptCaesarCipher(inputText);
+        return decryptCaesarCipher(inputText, key);
     }
 }
