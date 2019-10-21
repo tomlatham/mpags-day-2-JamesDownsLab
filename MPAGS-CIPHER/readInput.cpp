@@ -18,10 +18,10 @@ std::string read_input(
             std::cerr << "Error reading File" << std::endl;
         }
     } else {
-        // Loop over each character from user input
-        // (until Return then CTRL-D (EOF) pressed)
-        while (std::cin >> inputChar) {
-            inputText += transformChar(inputChar);
+        std::string typedText{};
+        std::getline(std::cin, typedText);
+        for (char i : typedText){
+            inputText += transformChar(i);
         }
     }
     return inputText;
