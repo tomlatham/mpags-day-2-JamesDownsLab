@@ -20,6 +20,7 @@ std::string read_input(
     } else {
         std::string typedText{};
         std::getline(std::cin, typedText);
+        // range based for loop
         for (char i : typedText){
             inputText += transformChar(i);
         }
