@@ -1,6 +1,6 @@
 # Clion specific files / folders
 cmake-build-debug
-
+.idea
 
 # Don't add the compiled
 mpags-cipher
