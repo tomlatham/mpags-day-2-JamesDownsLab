@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
     bool versionRequested{false};
     std::string inputFile{};
     std::string outputFile{};
-    int defaultKey{5};
+    int key{5};
     bool encrypt{true};
 
     bool commandLineFailed{true};
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
             versionRequested,
             inputFile,
             outputFile,
-            defaultKey,
+            key,
             encrypt
     );
 
@@ -69,7 +69,7 @@ int main(int argc, char *argv[]) {
     // Read the input, from a file if given, from console otherwise
     std::string inputText{read_input(inputFile)};
 
-    std::string outputText{runCaesarCipher(inputText, true)};
+    std::string outputText{runCaesarCipher(inputText, true, key)};
 
     // Output the transliterated text.
     // To output file if given, to screen if not.

@@ -5,6 +5,7 @@
 
 std::string runCaesarCipher(
     const std::string& inputText,
-    const bool encrypt);
+    const bool& encrypt,
+    const int& key);
 
 #endif 

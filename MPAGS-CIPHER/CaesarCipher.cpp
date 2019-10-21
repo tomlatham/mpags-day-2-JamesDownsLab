@@ -16,7 +16,9 @@ std::string decryptCaesarCipher(
 
 std::string runCaesarCipher(
     const std::string& inputText,
-    const bool encrypt){
+    const bool& encrypt,
+    const int& key){
+    (void)key;
     if (encrypt){
         return encryptCaesarCipher(inputText);
     }
