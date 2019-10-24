@@ -59,9 +59,6 @@ bool processCommandLine (
         ++i;
       }
     }
-    else if (cmdLineArgs[i] == "--encrypt"){
-      encrypt = true;
-    }
     else if (cmdLineArgs[i] == "--decrypt") {
       encrypt = false;
     }
