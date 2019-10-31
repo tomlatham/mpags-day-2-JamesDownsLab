@@ -3,7 +3,6 @@
 
 #include <string>
 #include <vector>
-#include <iostream>
 
 bool processCommandLine (
   const std::vector<std::string>& cmdLineArgs,
@@ -11,7 +10,7 @@ bool processCommandLine (
   bool& versionRequested,
   std::string& inputFile,
   std::string& outputFile,
-  int& defaultKey,
+  std::size_t& defaultKey,
   bool& encrypt
 );
 

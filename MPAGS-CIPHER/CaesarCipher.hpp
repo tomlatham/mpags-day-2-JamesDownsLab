@@ -6,6 +6,6 @@
 std::string runCaesarCipher(
     const std::string& inputText,
     const bool& encrypt,
-    const int& key);
+    const std::size_t& key);
 
 #endif 

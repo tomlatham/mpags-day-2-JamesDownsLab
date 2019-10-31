@@ -1,6 +1,10 @@
 #include "readInput.hpp"
 #include "TransformChar.hpp"
 
+#include <string>
+#include <fstream>
+#include <iostream>
+
 std::string read_input(
         const std::string &inputFile) {
     char inputChar{'x'};
@@ -18,11 +22,8 @@ std::string read_input(
             std::cerr << "Error reading File" << std::endl;
         }
     } else {
-        std::string typedText{};
-        std::getline(std::cin, typedText);
-        // range based for loop
-        for (char i : typedText){
-            inputText += transformChar(i);
+        while (std::cin >> inputChar) {
+            inputText += transformChar(inputChar);
         }
     }
     return inputText;

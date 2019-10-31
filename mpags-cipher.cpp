@@ -22,12 +22,10 @@ int main(int argc, char *argv[]) {
     bool versionRequested{false};
     std::string inputFile{};
     std::string outputFile{};
-    int key{5};
+    std::size_t key{5};
     bool encrypt{true};
 
-    bool commandLineFailed{true};
-
-    commandLineFailed = processCommandLine(
+    bool commandLineFailed { processCommandLine(
             cmdLineArgs,
             helpRequested,
             versionRequested,
@@ -35,7 +33,7 @@ int main(int argc, char *argv[]) {
             outputFile,
             key,
             encrypt
-    );
+    ) };
 
     if (commandLineFailed) {
         return 1;
@@ -51,7 +49,7 @@ int main(int argc, char *argv[]) {
     // Like help, requires no further action,
     // so return from main with zero to indicate success
     if (versionRequested) {
-        std::cout << "0.1.0" << std::endl;
+        std::cout << "0.2.0" << std::endl;
         return 0;
     }
 

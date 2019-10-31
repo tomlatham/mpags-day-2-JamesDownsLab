@@ -1,5 +1,7 @@
 #include "PrintHelp.hpp"
 
+#include <iostream>
+
 void printHelp(){
     // Line splitting for readability
     std::cout
@@ -12,7 +14,9 @@ void printHelp(){
             << "                   Stdin will be used if not supplied\n\n"
             << "  -o FILE          Write processed text to FILE\n"
             << "                   Stdout will be used if not supplied\n\n"
-            << "  --decrypt        Changes to decryption (defaults to encryption)";
+            << "  -k KEY           Specify the cipher KEY (defaults to 5)\n\n"
+            << "  --decrypt        Changes to decryption (defaults to encryption)\n"
+            << std::endl;
     // Help requires no further action, so return from main
     // with 0 used to indicate success
 }

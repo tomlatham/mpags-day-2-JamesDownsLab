@@ -1,5 +1,9 @@
 #include "writeOutput.hpp"
 
+#include <string>
+#include <fstream>
+#include <iostream>
+
 void write_output(
         const std::string &outputFile,
         const std::string &outputText) {
